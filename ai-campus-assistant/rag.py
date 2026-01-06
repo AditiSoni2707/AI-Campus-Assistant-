@@ -56,7 +56,7 @@ llm = ChatOpenAI(model="gpt-3.5-turbo")
 def format_docs(docs):
     return "\n\n".join(doc.page_content for doc in docs)
 
-# RAG Chain (NEW STYLE)
+# RAG Chain 
 rag_chain = (
     {
         "context": retriever | format_docs,
@@ -76,4 +76,5 @@ while True:
 
     answer = rag_chain.invoke(question)
     print("Assistant:", answer)
+
 
