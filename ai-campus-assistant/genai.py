@@ -38,9 +38,8 @@ tools = [
     )
 ]
 
-# ---------------------------
 # MEMORY (SHORT-TERM CONTEXT)
-# ---------------------------
+
 memory = ConversationBufferMemory(
     memory_key="chat_history",
     return_messages=True
@@ -65,4 +64,5 @@ while True:
 
     response = agent.run(user_input)
     print("Assistant:", response)
+
 
