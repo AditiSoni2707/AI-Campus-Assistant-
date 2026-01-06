@@ -5,15 +5,9 @@ from langchain_openai import ChatOpenAI
 from langchain.agents import initialize_agent, AgentType
 from langchain.tools import Tool
 from langchain.memory import ConversationBufferMemory
-
-# ---------------------------
 # LLM
-# ---------------------------
 llm = ChatOpenAI(model="gpt-3.5-turbo", temperature=0)
-
-# ---------------------------
 # TOOLS
-# ---------------------------
 def campus_rules_tool(query: str) -> str:
     return (
         "Campus Rules:\n"
@@ -52,9 +46,7 @@ memory = ConversationBufferMemory(
     return_messages=True
 )
 
-# ---------------------------
 # AGENT (AUTONOMOUS)
-# ---------------------------
 agent = initialize_agent(
     tools=tools,
     llm=llm,
@@ -64,10 +56,8 @@ agent = initialize_agent(
 )
 
 
-
-# ---------------------------
 # CHAT LOOP
-# ---------------------------
+
 while True:
     user_input = input("Student: ")
     if user_input.lower() == "exit":
@@ -75,3 +65,4 @@ while True:
 
     response = agent.run(user_input)
     print("Assistant:", response)
+
